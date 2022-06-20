@@ -9,7 +9,7 @@ series = pd.Series(index=range(data.start.min(),dt.now().year))
 
 
 for monarch in data.index :
-    series.loc[data.loc[m].start:data.loc[m].end] = m
+    series.loc[data.loc[monarch].start:data.loc[monarch].end] = monarch
 app = flask.Flask(__name__)
 
 @app.route('\', methods = ['GET'])
