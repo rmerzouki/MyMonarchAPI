@@ -3,13 +3,13 @@ from flask import request
 import pandas as pd
 from datetime import datetime as dt
 
-data = pd.read_csv('Monarchs-of-England.csv', names=['start','end','monarch']).set_index('monarch')
+data = pd.read_csv('Monarchs-of-England.csv', names=['s','e','m']).set_index('m')
 
-series = pd.Series(index=range(data.start.min(),dt.now().year))
+series = pd.Series(index=range(data.s.min(),dt.now().year), dtype=int)
 
+for m in data.index :
+    series.loc[data.loc[m].s:data.loc[m].e] = m
 
-for monarch in data.index :
-    series.loc[data.loc[monarch].start:data.loc[monarch].end] = monarch
 app = flask.Flask(__name__)
 
 @app.route('\', methods = ['GET'])
