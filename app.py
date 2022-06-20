@@ -12,7 +12,7 @@ for m in data.index :
 
 app = flask.Flask(__name__)
 
-@app.route('\', methods = ['GET'])
+@app.route('/', methods = ['GET'])
 
 def home():
     year = int(request.args['year'])
